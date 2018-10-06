@@ -18,7 +18,7 @@ sap.ui.define([
 				"clientSecret": "IUTA1zPBP0ZO2m7k75nqDvAIo6w=",
 				"url": "https://i300455trial.authentication.eu10.hana.ondemand.com"
 			}
-		},
+		}, 
 
 		onInit: function () {
 			var that = this;
