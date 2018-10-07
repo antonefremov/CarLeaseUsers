@@ -1,0 +1,33 @@
+<core:FragmentDefinition xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:f="sap.ui.layout.form">
+	<Dialog contentWidth="500px" afterClose="onNewUserDiealogAfterClose" title="{i18n>newUserDialogTitle}" class="sapUiSizeCompact">
+		<f:SimpleForm id="EmfFormMovementDetails" editable="true" layout="ResponsiveGridLayout" labelSpanXL="4" labelSpanL="3" labelSpanM="4"
+			labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="4" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="1" columnsM="1"
+			singleContainerFullSize="false">
+			<f:content>
+				<Label text="{i18n>userId}" labelFor="UserIdTxt"/>
+				<Input id="UserIdTxt" value="{newUserModel>/userId}"/>
+				<Label text="{i18n>userName}" labelFor="UserNameTxt"/>
+				<Input id="UserNameTxt" value="{newUserModel>/userName}"/>
+				<Label text="{i18n>ownerType}" labelFor="OwnerTypeSel"/>
+				<Select id="OwnerTypeSel" selectedKey="{newUserModel>/ownerType}">
+					<!--change="onOwnerTypeSelected"-->
+					<items>
+						<core:ListItem text="" key=""/>
+						<core:ListItem text="{i18n>regulator}" key="regulator"/>
+						<core:ListItem text="{i18n>manufacturer}" key="manufacturer"/>
+						<core:ListItem text="{i18n>private}" key="private"/>
+						<core:ListItem text="{i18n>lease_company}" key="lease_company"/>
+						<core:ListItem text="{i18n>scrap_merchant}" key="scrap_merchant"/>
+					</items>
+				</Select>
+				<Label text="{i18n>userCompany}" labelFor="UserCompanyTxt"/>
+				<Input id="UserCompanyTxt" value="{newUserModel>/userCompany}"/>
+			</f:content>
+		</f:SimpleForm>
+		<buttons>
+			<Button text="{i18n>btnOk}" type="Accept" press="onNewUserDialogOK" 
+				enabled="{= !!${newUserModel>/userId} &amp;&amp; !!${newUserModel>/userName} &amp;&amp; !${newUserModel>/ownerType}.length !== 0 &amp;&amp; !!${newUserModel>/userCompany}}"/>
+			<Button text="{i18n>btnCancel}" press="onNewUserDialogCancel"/>
+		</buttons>
+	</Dialog>
+</core:FragmentDefinition>

@@ -4,14 +4,14 @@
 		<pages>
 			<Page title="{i18n>title}">
 				<content>
-					<Table id="CarLeaseWorklistTable" width="auto" items="{ path: '/vehicles'}" noDataText="No data"
+					<Table id="CarLeaseUsersTable" width="auto" items="{ path: '/owners'}" noDataText="No data"
 						busyIndicatorDelay="1" growing="true" growingScrollToLoad="true" class="sapUiSizeCompact"
 						selectionChange="onDetailPress" mode="SingleSelectMaster">
 						<headerToolbar>
 							<Toolbar>
 								<!--						<Title id="EmfvWorklistTableHeader" text="{worklistView>/worklistTableTitle}" class="sapUiMediumMarginEnd"/>-->
 								<ToolbarSpacer/>
-								<Button text="{i18n>newButtonText}" press="onNewButtonPress"/>
+								<Button text="{i18n>newUserButtonText}" press="onNewUserButtonPress"/>
 								<!--						<Button text="{i18n>editButtonText}" tooltip="{i18n>newButtonTooltip}" press="onEditButtonPress" enabled="{worklistView>/editButtonEnabled}"/>-->
 								<!--<Button icon="sap-icon://sort" tooltip="{i18n>sortButtonTooltip}" press="onSortButtonPress"/>-->
 								<!--<Button icon="sap-icon://group-2" tooltip="{i18n>groupButtonTooltip}" press="onGroupButtonPress"/>-->
@@ -19,23 +19,30 @@
 							</Toolbar>
 						</headerToolbar>
 						<columns>
-							<Column id="Make">
-								<Text text="{i18n>Make}" id="MakeColumnTitle"/>
+							<Column id="Id">
+								<Text text="{i18n>Id}" id="IdColumnTitle"/>
 							</Column>
-							<Column id="Model">
-								<Text text="{i18n>Model}" id="ModelColumnTitle"/>
+							<Column id="UserName">
+								<Text text="{i18n>UserName}" id="UserNameColumnTitle"/>
 							</Column>
-							<Column id="Reg" minScreenWidth="Tablet" demandPopin="true">
-								<Text text="{i18n>Reg}" id="RegColumnTitle"/>
+							<Column id="OwnerType" minScreenWidth="Tablet" demandPopin="true">
+								<Text text="{i18n>OwnerType}" id="OwnerTypeColumnTitle"/>
+							</Column>
+							<Column id="Company" minScreenWidth="Tablet" demandPopin="true">
+								<Text text="{i18n>Company}" id="CompanyColumnTitle"/>
+							</Column>
+							<Column id="IsEnabled" minScreenWidth="Tablet" demandPopin="true">
+								<Text text="{i18n>IsEnabled}" id="IsEnabledColumnTitle"/>
 							</Column>
 						</columns>
 						<items>
-							<ColumnListItem type="Navigation">
+							<ColumnListItem type="Inactive">
 								<cells>
-									<Text text="{make}"/>
-									<Text text="{model}"/>
-									<Text text="{reg}"/>
-									<Text text="{owner}"/>
+									<Text text="{id}"/>
+									<Text text="{username}"/>
+									<Text text="{ownerType}"/>
+									<Text text="{company}"/>
+									<CheckBox selected="{enabled}" editable="false"/>
 									<!--<Text text="{parts: [{path: 'PeriodStart'}, {path: 'PeriodEnd'}], formatter: '.formatter.effectivePeriodFormat' }"/>-->
 								</cells>
 							</ColumnListItem>
